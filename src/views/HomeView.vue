@@ -1,9 +1,14 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <h2>Home page</h2>
+    <div>
+      <router-link to="/home">Home</router-link>
+      <br>
+      <router-link to="/about">About</router-link>
+    </div>
   </main>
 </template>
