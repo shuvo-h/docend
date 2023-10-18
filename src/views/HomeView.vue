@@ -10,5 +10,8 @@
       <br>
       <router-link to="/about">About</router-link>
     </div>
+    <div>
+      <woot-modal></woot-modal>
+    </div>
   </main>
 </template>
