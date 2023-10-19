@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1 class="bg">This is an about page</h1>
     <div>
       <h2>{{$t('HEADER.TITLE')}}</h2>
       <p>{{$t('HEADER.PARA')}}</p>
@@ -27,6 +27,11 @@
     <div>
       <form-validate-page />
     </div>
+    <hr>
+    <div>
+      <EventListenerCom />
+      <EventTriggerCom />
+    </div>
   </div>
 </template>
 
@@ -35,9 +40,11 @@ import {ref, onMounted, inject, } from 'vue';
 import {useStore} from 'vuex';
 import {useRoute,} from 'vue-router';
 import FormValidatePage from './FormValidatePage/FormValidatePage.vue';
+import EventTriggerCom from "./FormValidatePage/EventTrigerComponent.vue";
+import EventListenerCom from "./FormValidatePage/EventBusOnOff.vue";
 
 export default {
-  components: { FormValidatePage },
+  components: { FormValidatePage ,EventTriggerCom,  EventListenerCom},
   // mixins(){},
   setup(){
     const route = useRoute();
@@ -69,7 +76,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
+// @import '../assets/scss/style.scss';
 
 </style>
