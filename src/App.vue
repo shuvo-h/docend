@@ -4,6 +4,7 @@ import { RouterView } from 'vue-router';
 
 <template>
   <RouterView v-slot="{Component}">
+    <!-- v-slot=Component is the variable for :is=Commponent -->
     <transition name="route-fade" mode="out-in">
       <component :is="Component" />
     </transition>
