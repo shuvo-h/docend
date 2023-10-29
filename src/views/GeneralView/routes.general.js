@@ -1,5 +1,7 @@
 const LayoutGeneral = () => import('../GeneralView/LayoutGeneral.vue');
-const HomePage = () => import('../HomeView.vue');
+const HomePage = () => import('../GeneralView/home/HomeView.vue');
+const AboutPage = () => import('../GeneralView/AboutView.vue');
+const ContactUsPage = () => import('../GeneralView/ContactUs.vue');
 
 
 export const routesGeneral = {
@@ -12,9 +14,18 @@ export const routesGeneral = {
             component: HomePage
         },
         {
-            path:"/home",
+            path:"home",
             redirect: {name: 'home'}
         },
+        {
+            path: "about",
+            name: 'about',
+            component: AboutPage,
+        },
+        {
+            path: "contact",
+            name: 'contact',
+            component: ContactUsPage,
+        },
     ],
-    // redirect: "",
 }

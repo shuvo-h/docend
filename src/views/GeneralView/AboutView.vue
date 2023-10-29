@@ -1,25 +1,22 @@
 <template>
   <div class="about">
+
     <h1 class="bg">This is an about page</h1>
     <div>
       <h2>{{$t('HEADER.TITLE')}}</h2>
       <p>{{$t('HEADER.PARA')}}</p>
     </div>
-    <div>
-      <router-link to="/home">Home</router-link>
-      <br>
-      <router-link to="/about">About</router-link>
-    </div>
+    
     <div>
       <pre>{{api_response}}</pre>
     </div>
+    
     <div>
       <h2>Counter = {{count}}</h2>
     </div>
     <div>
       <button  @click="changeLocale('en')">English</button>
       <button  @click="changeLocale('ar')">Arabic</button>
-      <!-- Your other content -->
     </div>
     <div>
       <woot-avatar></woot-avatar>
@@ -27,24 +24,22 @@
     <div>
       <form-validate-page />
     </div>
-    <hr>
-    <div>
-      <EventListenerCom />
-      <EventTriggerCom />
-    </div>
+    
   </div>
 </template>
 
 <script>
 import {ref, onMounted, inject, } from 'vue';
-import {useStore} from 'vuex';
 import {useRoute,} from 'vue-router';
-import FormValidatePage from './FormValidatePage/FormValidatePage.vue';
-import EventTriggerCom from "./FormValidatePage/EventTrigerComponent.vue";
-import EventListenerCom from "./FormValidatePage/EventBusOnOff.vue";
+import {useStore} from 'vuex';
+import FormValidatePage from '../FormValidatePage/FormValidatePage.vue';
+
+
 
 export default {
-  components: { FormValidatePage ,EventTriggerCom,  EventListenerCom},
+  components: { 
+      FormValidatePage ,
+    },
   // mixins(){},
   setup(){
     const route = useRoute();
@@ -74,6 +69,7 @@ export default {
     }
   },
 }
+
 </script>
 
 <style lang="scss">

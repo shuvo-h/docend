@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="page">
     <header>
-        <h3>General Layout Header</h3>
+        <TopBar />
     </header>
     <main>
         <router-view></router-view>
@@ -13,19 +13,23 @@
 </template>
 
 <script>
-// import { onMounted } from 'vue'
-/*
+import TopBar from '@/components/Shared/navbar/Topbar.vue';
+
+
 export default {
-    components:{},
-    computed:{},
-    mounted:{},
+    components:{TopBar},
+    // computed:{},
+    // mounted:{},
     setup(){
         // onMounted
     },
 }
-*/
+
 </script>
 
-<style>
-
+<style lang="scss">
+.page{
+    background-color: #eee;
+    min-height: 100vh;
+}
 </style>

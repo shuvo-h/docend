@@ -10,7 +10,6 @@ import VueDOMPurifyHTML from 'vue-dompurify-html';
 import { domPurifyConfig } from './shared/helpers/HTMLSanitizer';
 import WootUIKit from './components';
 import store_vueX from './vueX_Store/store';
-import EventBus from './helper/EventBus';
 // import { VTooltip } from 'v-tooltip';
 
 const i18n = createI18n({
@@ -38,8 +37,5 @@ app.use(router)
 app.provide('i18n', i18n);
 app.config.globalProperties.$t = i18n.global.t;     // Make i18n $t globally accessible
 
-// Provide the EventBus instance with the key 'bus' to make it globally accessible
-app.provide('bus',EventBus);
-app.config.globalProperties.$bus = EventBus;
 
 app.mount('#app');
