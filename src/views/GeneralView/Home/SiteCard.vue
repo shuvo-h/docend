@@ -1,23 +1,63 @@
 <template>
   <div class="card">
         <div class="img_wrapper">
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/000/579/276/small/12-27.jpg" alt="">
+            <!-- <img src="https://static.vecteezy.com/system/resources/thumbnails/000/579/276/small/12-27.jpg" alt=""> -->
+            <img :src="logo_url" alt="">
         </div>
         <div class="body">
-            <h3 class="title">Bond Bridge Link: A Social boostup web application</h3>
+            <router-link :to="siteSlugUrl">
+                <h3 class="title">{{title}}</h3>
+            </router-link>
             <div class="category">
-                <button>1 Week Ago</button>
+                <button>{{time_stamp}}</button>
                 in
-                <span>Video Editing</span>
+                <span>{{category}}</span>
             </div>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum quam aspernatur rerum neque ullam est eveniet officia, eos reiciendis? Accusamus.</p>
+            <p>{{summary}}</p>
         </div>
     </div>
 </template>
 
 <script>
-export default {
+import { computed } from 'vue';
 
+export default {
+    props: {
+            title:{
+                type: String,
+                required: true,
+            },
+            slug:{
+                type: String,
+                required: true,
+            },
+            logo_url:{
+                type: String,
+                required: true
+            },
+            time_stamp:{
+                type: String,
+                required: true
+            },
+            category:{
+                type: String,
+                required: true
+            },
+            summary:{
+                type: String,
+                required: true
+            },
+        },
+    setup(props){
+        // const props = defineProps()
+        console.log({props});
+        const siteSlugUrl = computed(()=>{
+            return `/sites/${props.slug}`;
+        })
+        return {
+            siteSlugUrl,
+        }
+    },
 }
 </script>
 
@@ -38,12 +78,16 @@ export default {
             overflow: hidden;
 
             img{
-                width: 100%;
-                height: 100%;
+                width: 150px;
+                height: 150px;
             }
         }
 
         .body{
+
+            a{
+                text-decoration: none;
+            }
 
             .title{
                 font-size: 20px;
