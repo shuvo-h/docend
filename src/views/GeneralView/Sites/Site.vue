@@ -8,59 +8,11 @@
     <section class="site_container">
         <aside class="site_nav">
             side accordian nav 
-            <div>
-                <input type="text" placeholder="search here">
-            </div>
-            <div>
-                <div>
-                    <ul>
-                        <li>
-                            <label for="">Platform</label>
-                            <ul>
-                                <li>
-                                    <label for="">Users API</label>
-                                    <ul>
-                                        <li><label for="">Careate User</label></li>
-                                        <li><label for="">Get User</label></li>
-                                        <li><label for="">Delete User</label></li>
-                                        <li><label for="">Update User</label></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <label for="">Application</label>
-                            <ul>
-                                <li>
-                                    <label for="">Video API</label>
-                                    <ul>
-                                        <li><label for="">Add a Video</label></li>
-                                        <li><label for="">Get Video</label></li>
-                                        <li><label for="">Delete Video</label></li>
-                                        <li><label for="">Update Video</label></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <label for="">API docs by BondBridgeLink Inc.</label>
-                </div>
-            </div>
+            <site-nav />
         </aside>
         <aside class="site_details">
-            <div class="row">
-                <div>details 1</div>
-                <div>API Response code snippet response 1</div>
-            </div>
-            <div class="row">
-                <div>details 2</div>
-                <div>
-                    API Response code snippet response 2
-                    <pre style="color:#00FFFF;background-color:#000; width:fit-content;">{{site}}</pre>
-                </div>
-            </div>
+            <request-details />
+            <ResponseAPI />
         </aside>
     </section>
   </div>
@@ -70,8 +22,12 @@
 import { useRoute, useRouter } from 'vue-router';
 import {docList} from "@/data/docList.js";
 import { onBeforeMount, reactive, } from 'vue';
+import SiteNav from './SiteNav.vue';
+import ResponseAPI from './ResponseAPI.vue';
+import RequestDetails from './RequestDetails.vue';
 
 export default {
+  components: { SiteNav, ResponseAPI, RequestDetails, },
     name:"project-site",
     setup(){
         const router = useRouter();
@@ -100,7 +56,12 @@ export default {
         grid-template-columns: 250px 1fr;
         gap: 1rem;
     }
-
+    .site_nav{
+        border: 1px solid;
+        background-color: rgb(225, 225, 225);
+        min-height: calc(100vh - 250px);
+        overflow: auto;
+    }
     .site_details{
         
         .row{
