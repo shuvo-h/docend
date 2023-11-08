@@ -6,30 +6,19 @@
     <div>
         <div>
             <ul>
-                <li>
-                    <label for="">Platform</label>
+                <li v-for="navItem in activeSiteNavv.section" :key="navItem.slug">
+                    <label for="">{{navItem.name}}</label>
                     <ul>
-                        <li>
-                            <label for="">Users API</label>
+                        <li v-for="category in navItem.categories" :key="category.title">
+                            <label for="">{{category.title}}</label>
                             <ul>
-                                <li><label for="">Careate User</label></li>
-                                <li><label for="">Get User</label></li>
-                                <li><label for="">Delete User</label></li>
-                                <li><label for="">Update User</label></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <label for="">Application</label>
-                    <ul>
-                        <li>
-                            <label for="">Video API</label>
-                            <ul>
-                                <li><label for="">Add a Video</label></li>
-                                <li><label for="">Get Video</label></li>
-                                <li><label for="">Delete Video</label></li>
-                                <li><label for="">Update Video</label></li>
+                                <li v-for="apiInfo in category.apiList" :key="apiInfo.hash">
+                                    <label for="">
+                                        <router-link :to="`#${apiInfo.hash}`">
+                                            <a>{{apiInfo.title}}</a>
+                                        </router-link>
+                                    </label>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -39,48 +28,31 @@
         <div>
             <label for="">API docs by BondBridgeLink Inc.</label>
         </div>
-        <pre>{{dtObj}}</pre>
     </div>
   </section>
 </template>
 
 <script>
+import {navApiList} from "@/data/navApiList.js"
+import { useRoute } from 'vue-router';
+import { onBeforeMount, reactive } from 'vue';
 
-const dtObj = {
-    site: 'Bond Bridge Link',
-    section:[
-        {
-            name: "Platform",
-            categories: [
-                {
-                    title:"Users API",
-                    apiList: [
-                        {
-                            hash:"create_user",
-                            title:"Create User",
-                        },
-                        {
-                            hash:"get_user",
-                            title:"Get User",
-                        },
-                        {
-                            hash:"delete_user",
-                            title:"Delete User",
-                        },
-                        {
-                            hash:"update_user",
-                            title:"Update User",
-                        },
-                    ],
-                },
-            ]
-        },
-    ],
-}
 export default {
     setup(){
+        // find out the side nav of this project
+        const route = useRoute();
+        const activeSiteNavv = reactive({})
+        console.log(route);
+        
+        onBeforeMount(()=>{
+            const result = navApiList.find(navEl=>navEl.slug === route.params.site_slug);
+            Object.assign(activeSiteNavv,result);
+            console.log({activeSiteNavv});
+        })
+
         return{
-            dtObj
+            activeSiteNavv,
+            navItems: navApiList,
         }
     }
 }

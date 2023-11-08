@@ -59,7 +59,7 @@ export default {
     .site_nav{
         border: 1px solid;
         background-color: rgb(225, 225, 225);
-        min-height: calc(100vh - 250px);
+        max-height: calc(100vh - 250px);
         overflow: auto;
     }
     .site_details{
