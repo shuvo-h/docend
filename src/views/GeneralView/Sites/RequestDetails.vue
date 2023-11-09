@@ -32,8 +32,10 @@
                     </div>
                 </div>
             </div>
+            <hr>
         </div>
-        <div>API Response code snippet response 1</div>
+        
+
     </div>
 </template>
 

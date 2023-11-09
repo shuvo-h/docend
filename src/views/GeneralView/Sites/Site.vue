@@ -10,7 +10,7 @@
             side accordian nav 
             <site-nav />
         </aside>
-        <aside class="site_details">
+        <aside class="site_details row">
             <request-details />
             <ResponseAPI />
         </aside>
@@ -64,7 +64,7 @@ export default {
     }
     .site_details{
         
-        .row{
+        &.row{
             display: grid;
             grid-template-columns: repeat(2,1fr);
             gap: 1rem;
