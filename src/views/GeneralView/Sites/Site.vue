@@ -20,7 +20,11 @@
         -->
 
         <aside>
-            <div v-for="number in Array.from(Array(10).keys())" :key="number" class="site_details row">
+            <div 
+                v-for="number in Array.from(Array(10).keys())" 
+                class="site_details row"
+                :key="number" 
+            >
                 <request-details />
                 <ResponseAPI />
             </div>
