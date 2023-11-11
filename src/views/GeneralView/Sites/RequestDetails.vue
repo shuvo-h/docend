@@ -1,13 +1,6 @@
 <template>
-    <div class="row">
-        <div>
-            details 1
-            account_id: requited
-            response
-            <div>200 Success</div>
-            <div>401 Unauthorized</div>
-            <hr>
-            <h3>Accounts</h3>
+    <div class="row response_section">
+            <h3 class="title">Accounts</h3>
             <div>
                 <h4>Create an Account</h4>
                 <div>
@@ -33,9 +26,6 @@
                 </div>
             </div>
             <hr>
-        </div>
-        
-
     </div>
 </template>
 
@@ -45,9 +35,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .two_col{
         display: grid;
         grid-template-columns: 300px 1fr;
+    }
+    .response_section{
+        .title{
+            font-weight: 700;
+            font-size: 30px;
+            margin: 0 auto 3.5rem auto;
+        }
     }
 </style>

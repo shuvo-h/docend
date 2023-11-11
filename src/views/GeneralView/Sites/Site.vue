@@ -2,17 +2,28 @@
   <div>
     <h2>project site title</h2>
     <div>
-        <pre>{{site}}</pre>
+        <pre>{{number}}){{site}}</pre>
         <h2>{{site.info}}</h2>
     </div>
     <section class="site_container">
-        <aside class="site_nav">
-            side accordian nav 
-            <site-nav />
+        <aside  >
+            <div class="site_nav" style="position: sticky; top: 100px;">
+                side accordian nav 
+                <site-nav  />
+            </div>
         </aside>
+        <!--         
         <aside class="site_details row">
             <request-details />
             <ResponseAPI />
+        </aside> 
+        -->
+
+        <aside>
+            <div v-for="number in Array.from(Array(10).keys())" :key="number" class="site_details row">
+                <request-details />
+                <ResponseAPI />
+            </div>
         </aside>
     </section>
   </div>
@@ -61,6 +72,7 @@ export default {
         background-color: rgb(225, 225, 225);
         max-height: calc(100vh - 250px);
         overflow: auto;
+
     }
     .site_details{
         
