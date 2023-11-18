@@ -1,10 +1,5 @@
 <template>
   <div>
-    <h2>project site title</h2>
-    <div>
-        <pre>{{number}}){{site}}</pre>
-        <h2>{{site.info}}</h2>
-    </div>
     <section class="site_container">
         <aside  >
             <div class="site_nav" style="position: sticky; top: 100px;">
@@ -12,23 +7,30 @@
                 <site-nav  />
             </div>
         </aside>
-        <!--         
-        <aside class="site_details row">
-            <request-details />
-            <ResponseAPI />
-        </aside> 
-        -->
 
         <aside>
-            <div 
+            <section 
                 v-for="number in Array.from(Array(10).keys())" 
                 class="site_details row"
-                :key="number" 
+                :key="number"
             >
-                <request-details />
-                <ResponseAPI />
-            </div>
+                <aside>
+                    <div v-if="number === 0" style="margin-top: 2rem;">
+                        <h2>Chatwoot (1.0.0)</h2>
+                        <p>Download OpenAPI specification:Download</p>
+                        <p>E-mail: hello@chatwoot.com</p>
+                        <p>License: MIT License</p>
+                        <p>Terms of Service</p>
+                        <p>This is the API documentation for Chatwoot server.</p>  
+                    </div>
+                    <request-details v-if="number !== 0" style="margin-top: 2rem;" />
+                </aside>
+                <aside style="background-color: rgb(38 50 56); color: #fff; padding: 2rem;">
+                    <ResponseAPI v-if="number !== 0" />
+                </aside>
+            </section>
         </aside>
+       
     </section>
   </div>
 </template>
@@ -74,7 +76,7 @@ export default {
     .site_nav{
         border: 1px solid;
         background-color: rgb(225, 225, 225);
-        max-height: calc(100vh - 250px);
+        max-height: calc(100vh - 150px);
         overflow: auto;
 
     }
@@ -82,8 +84,7 @@ export default {
         
         &.row{
             display: grid;
-            grid-template-columns: repeat(2,1fr);
-            gap: 1rem;
+            grid-template-columns: 1fr minmax(500px,600px);
         }
     }
 </style>
